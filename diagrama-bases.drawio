@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2023-03-28T15:39:29.883Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="qpmK9sswPhgeXWXtNCT7" version="21.0.10" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-28T15:40:42.557Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="edECvwjLirIoT8jkxRHf" version="21.0.10" type="github">
   <diagram name="Página-1" id="oyr48hVxfsf2USA6J1Er">
-    <mxGraphModel dx="3796" dy="2156" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="4213" dy="2369" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="Hb3Jc71vQll2scaf4FI3-3" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-110" y="-606" width="1070" height="1070" as="geometry" />
+          <mxGeometry x="-110" y="-490" width="1070" height="1070" as="geometry" />
         </mxCell>
         <mxCell id="Sdwt9xM7wRWtMo3GWOlH-35" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="1205" y="-1180" width="630" height="630" as="geometry" />
@@ -390,6 +390,9 @@
         </mxCell>
         <mxCell id="Hb3Jc71vQll2scaf4FI3-13" value="+ since_until:&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Hb3Jc71vQll2scaf4FI3-4">
           <mxGeometry y="234" width="240" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Hb3Jc71vQll2scaf4FI3-16" value="Sales documents" style="text;align=center;fontStyle=0;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="385" y="-460" width="80" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
