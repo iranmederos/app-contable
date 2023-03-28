@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-03-28T20:15:49.632Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="k4H7rpZcC-Jp7Qq3-y-M" version="21.0.10" type="github">
+<mxfile host="app.diagrams.net" modified="2023-03-28T20:19:36.561Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="H-KZ-jh6vCr1IYniseHG" version="21.0.10" type="github">
   <diagram name="Página-1" id="oyr48hVxfsf2USA6J1Er">
     <mxGraphModel dx="2903" dy="1701" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -206,7 +206,7 @@
         <mxCell id="Sdwt9xM7wRWtMo3GWOlH-26" value="+ tax_residence:&amp;nbsp;varchar(100)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Sdwt9xM7wRWtMo3GWOlH-19" vertex="1">
           <mxGeometry y="182" width="220" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="Sdwt9xM7wRWtMo3GWOlH-32" value="+ withholdings_iva: boolean()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Sdwt9xM7wRWtMo3GWOlH-19" vertex="1">
+        <mxCell id="Sdwt9xM7wRWtMo3GWOlH-32" value="+ ret_iva: boolean()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Sdwt9xM7wRWtMo3GWOlH-19" vertex="1">
           <mxGeometry y="208" width="220" height="26" as="geometry" />
         </mxCell>
         <mxCell id="Sdwt9xM7wRWtMo3GWOlH-33" value="+ percentage_iva: float()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Sdwt9xM7wRWtMo3GWOlH-19" vertex="1">
