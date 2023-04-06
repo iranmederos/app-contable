@@ -4,8 +4,8 @@ from django.db import models
 
 
 TYPE_NAC=(('1','Nacional'),('2','Extranjero'))
-TYPE_PERSON=(('1',''),('2',''))
-TYPE_TAXPAYER=(('1',''),('2',''))
+TYPE_PERSON=(('1','Natural'),('2','Juridica'))
+TYPE_TAXPAYER=(('1','Formal'),('2','Ordinario'),('3','Especial'),('4','Publico'),('5','No Especial'))
 
 class RegistrationData(models.Model):
     id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
@@ -29,14 +29,12 @@ class Company(models.Model):
     tax_residence= models.CharField(null=False, blank=False, max_length=100)
     number_phone= models.CharField(null=False, blank=False, unique=True, max_length=20)
     email= models.CharField(null=False, blank=False, unique=True, max_length=20)
-    domiciled= models.BooleanField(null=False, blank=False, unique=True)
-    nacionality= models.CharField(choices=TYPE_NAC, null=False, blank=False, unique=True)
-    #Averiguar tipo exacto!
-    exempt_income= models
-    economic_denomination= models.CharField(null=False, blank=False)
-    #crear las tuplas correspondientes
-    type_person= models.CharField(choices=TYPE_PERSON, null=False, blank=False)
-    type_taxpayer= models.CharField(choices=TYPE_TAXPAYER, null=False, blank=False)
-    registration_data= models.OneToOneField(RegistrationData, null=False, blank=False, unique=True)
+    domiciled= models.BooleanField(null=False, blank=False)
+    nacionality= models.CharField(choices=TYPE_NAC, null=False, blank=False, max_length=20)
+    exempt_income= models.BooleanField(null=False, blank=False)
+    economic_denomination= models.CharField(null=False, blank=False, max_length=20)
+    type_person= models.CharField(choices=TYPE_PERSON, null=False, blank=False, max_length=20)
+    type_taxpayer= models.CharField(choices=TYPE_TAXPAYER, null=False, blank=False, max_length=20)
+    registration_data= models.OneToOneField(RegistrationData, on_delete=models.CASCADE, null=False, blank=False, unique=True)
 
 
