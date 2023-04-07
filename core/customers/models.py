@@ -19,3 +19,5 @@ class Customer(models.Model):
     type_sales= models.CharField(choices=TYPE_SALES,null=False, blank=False, max_length=20)
     company= models.ForeignKey(Company, on_delete=models.DO_NOTHING, null=False, blank=False)
 
+    def __str__(self) -> str:
+        return self.business_name

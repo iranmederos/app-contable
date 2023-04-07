@@ -19,4 +19,8 @@ class Provider(models.Model):
     type_person= models.CharField(choices=TYPE_PERSON, null=False, blank=False, max_length=20)
     type_taxpayer= models.CharField(choices=TYPE_TAXPAYER, null=False, blank=False, max_length=20)
     type_sales= models.CharField(choices=TYPE_SALES,null=False, blank=False, max_length=20)
-    company= models.ForeignKey(Company, on_delete=models.DO_NOTHING, null=False, blank=False) 
+    ret_code= models.CharField(null=False, blank=False, max_length=15, default=None)
+    company= models.ForeignKey(Company, on_delete=models.DO_NOTHING, null=False, blank=False, default=None) 
+
+    def __str__(self) -> str:
+        return self.business_name

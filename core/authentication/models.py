@@ -6,6 +6,8 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 class Role(models.Model):
     rol = models.CharField(max_length=10,null=False, blank=False)
 
+    def __str__(self) -> str:
+        return self.rol
 
 class CustomUser(AbstractUser):
     id = models.AutoField(null=False, blank=False,primary_key=True, unique=True)

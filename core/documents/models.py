@@ -8,22 +8,15 @@ TYPE_MACHINE=(("1","Registradora con mem. fiscal"),("2","Impresora fiscal"),("3"
 class DocumentType(models.Model):
     type_doc= models.CharField(null=False, blank=False, max_length=15)
 
+    def __str__(self) -> str:
+        return self.type_doc
+
 class Totals(models.Model):
     id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
     amount= models.FloatField(null=False, blank=False)
     gross_amount= models.FloatField(null=False, blank=False)
     iva_amount= models.FloatField(null=False, blank=False)
     neto_amount= models.FloatField(null=False, blank=False)
-
-class DocumentsItems(models.Model):
-    id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
-    description= models.CharField(null=False, blank=False, max_length=100)
-    amount= models.FloatField(null=False, blank=False)
-    iva= models.FloatField(null=False, blank=False)
-    amount_iva= models.FloatField(null=False, blank=False)
-    c_ctrl= models.FloatField(null=False, blank=False)
-    patente= models.FloatField(null=False, blank=False)
-    ret= models.FloatField(null=False, blank=False)
 
 
 class SalesDocument(models.Model):
@@ -36,9 +29,9 @@ class SalesDocument(models.Model):
     state= models.CharField(null=False, blank=False, max_length=20)
     type_record= models.CharField(choices=TYPE_RECORD,null=False, blank=False, max_length=20)
     document_type= models.ForeignKey(DocumentType,on_delete=models.DO_NOTHING, null=False, blank=False)
-    customer_code= models.ForeignKey(cust.Customer, on_delete=models.DO_NOTHING)
-    provider_code= models.ForeignKey(pr.Provider, on_delete=models.DO_NOTHING)
-
+    customer_code= models.ForeignKey(cust.Customer, on_delete=models.DO_NOTHING, default=None)
+    
+    
 
 class BuysDocument(models.Model):
     id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
@@ -50,9 +43,8 @@ class BuysDocument(models.Model):
     state= models.CharField(null=False, blank=False, max_length=20)
     type_record= models.CharField(choices=TYPE_RECORD,null=False, blank=False, max_length=20)
     document_type= models.ForeignKey(DocumentType,on_delete=models.DO_NOTHING, null=False, blank=False)
-    customer_code= models.ForeignKey(cust.Customer, on_delete=models.DO_NOTHING)
-    provider_code= models.ForeignKey(pr.Provider, on_delete=models.DO_NOTHING)
-
+    provider_code= models.ForeignKey(pr.Provider, on_delete=models.DO_NOTHING, default=None)
+   
 
 class SalesSummary(models.Model):
     id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
@@ -65,3 +57,16 @@ class SalesSummary(models.Model):
     zeta= models.CharField(null=False, blank=False, max_length=20)
     since= models.DateTimeField(null=False, blank=False) 
     until= models.DateTimeField(null=False, blank=False) 
+
+
+class DocumentsItems(models.Model):
+    id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
+    description= models.CharField(null=False, blank=False, max_length=100)
+    amount= models.FloatField(null=False, blank=False)
+    iva= models.FloatField(null=False, blank=False)
+    amount_iva= models.FloatField(null=False, blank=False)
+    c_ctrl= models.FloatField(null=False, blank=False)
+    patente= models.FloatField(null=False, blank=False)
+    ret= models.FloatField(null=False, blank=False)
+    sale_document= models.OneToOneField(SalesDocument, on_delete=models.DO_NOTHING, default=None,null=True, blank=True)
+    buy_document= models.OneToOneField(BuysDocument, on_delete=models.DO_NOTHING, default=None,null=True, blank=True)
