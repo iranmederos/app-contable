@@ -37,4 +37,9 @@ class Company(models.Model):
     type_taxpayer= models.CharField(choices=TYPE_TAXPAYER, null=False, blank=False, max_length=20)
     registration_data= models.OneToOneField(RegistrationData, on_delete=models.CASCADE, null=False, blank=False, unique=True)
 
+    class Meta:
+        verbose_name = ("")
+        verbose_name_plural = ("")
 
+    def __str__(self) -> str:
+        return self.business_name
