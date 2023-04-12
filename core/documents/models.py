@@ -1,11 +1,10 @@
 from django.db import models
 from customers import models as cust
 from providers import models as pr
-from tax_machine import models
+from tax_machine import models as tm
+
 TYPE_RECORD = (("1", "Registro"), ("2", "Complemeto"),
                ("3", "Anulación"), ("4", "Ajuste"))
-TYPE_MACHINE = (("1", "Registradora con mem. fiscal"),
-                ("2", "Impresora fiscal"), ("3", "Computadora con mem. fiscal"))
 
 
 class DocumentType(models.Model):
@@ -88,14 +87,11 @@ class SalesSummary(models.Model):
                           primary_key=True, unique=True)
     code = models.CharField(null=False, blank=False, max_length=20)
     description = models.CharField(null=False, blank=False, max_length=50)
-    type = models.CharField(choices=TYPE_MACHINE,
-                            null=False, blank=False, max_length=20)
-    serial = models.CharField(null=False, blank=False, max_length=20)
-    model = models.CharField(null=False, blank=False, max_length=20)
     n_invoice = models.CharField(null=False, blank=False, max_length=20)
     zeta = models.CharField(null=False, blank=False, max_length=20)
     since = models.DateTimeField(null=False, blank=False)
     until = models.DateTimeField(null=False, blank=False)
+    machine = models.ForeignKey(tm.TaxMachine, default=None, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("")
@@ -108,7 +104,7 @@ class SalesSummary(models.Model):
 class DocumentsItems(models.Model):
     id = models.AutoField(null=False, blank=False,
                           primary_key=True, unique=True)
-    description = models.CharField(null=False, blank=False, max_length=100)
+    description = models.CharField(null=True, blank=True, max_length=100)
     amount = models.FloatField(null=False, blank=False)
     iva = models.FloatField(null=False, blank=False)
     amount_iva = models.FloatField(null=False, blank=False)
@@ -132,9 +128,9 @@ class RetIVA(models.Model):
 
     id = models.AutoField(null=False, blank=False,
                           primary_key=True, unique=True)
-    nro_ret = models.CharField()
-    date_reception = models.DateTimeField()
-    date_ret_iva = models.DateTimeField()
+    nro_ret = models.CharField(null=True, blank=True, max_length=20)
+    date_reception = models.DateTimeField(null=True, blank=True)
+    date_ret_iva = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = ("")
