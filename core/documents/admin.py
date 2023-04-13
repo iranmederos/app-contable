@@ -1,29 +1,30 @@
 from django.contrib import admin
-from .models import SalesSummary,BuysDocument,SalesDocument,DocumentsItems,Totals,DocumentType
+from .models import SaleSummary,PurchaseDocument,SaleDocument,ItemDocument,DocumentType,RetIVA
 # Register your models here.
 
 
-class SalesSummaryAdmin(admin.ModelAdmin):
+class SaleSummaryAdmin(admin.ModelAdmin):
     list_display = ("id","code", "description")
 
-class BuysDocumentAdmin(admin.ModelAdmin):
+class PurchaseDocumentAdmin(admin.ModelAdmin):
     list_display = ("id","document_number", "document_type")
 
-class SalesDocumentAdmin(admin.ModelAdmin):
+class SaleDocumentAdmin(admin.ModelAdmin):
     list_display = ("id","document_number", "document_type")
 
-class DocumentsItemsAdmin(admin.ModelAdmin):
+class ItemDocumentAdmin(admin.ModelAdmin):
     list_display = ("id","description","amount","amount_iva")
-
-class TotalsAdmin(admin.ModelAdmin):
-    list_display = ("id","amount", "neto_amount")
 
 class DocumentTypeAdmin(admin.ModelAdmin):
     list_display = ("id","type_doc")
 
-admin.site.register(SalesSummary, SalesSummaryAdmin)
-admin.site.register(BuysDocument, BuysDocumentAdmin)
-admin.site.register(SalesDocument, SalesDocumentAdmin)
-admin.site.register(DocumentsItems, DocumentsItemsAdmin)
-admin.site.register(Totals, TotalsAdmin)
+class RetIVAAdmin(admin.ModelAdmin):
+    list_display=("id","nro_ret","date_ret_iva")
+
+
+admin.site.register(SaleSummary, SaleSummaryAdmin)
+admin.site.register(PurchaseDocument, PurchaseDocumentAdmin)
+admin.site.register(SaleDocument, SaleDocumentAdmin)
+admin.site.register(ItemDocument, ItemDocumentAdmin)
+admin.site.register(RetIVA, RetIVAAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)

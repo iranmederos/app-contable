@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'customers',
     'providers',
     'documents',
+    'tax_machine',
     
 ]
 

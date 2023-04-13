@@ -11,13 +11,14 @@ class DocumentType(models.Model):
     type_doc = models.CharField(null=False, blank=False, max_length=15)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("")
+        verbose_name = ("Document type")
+        verbose_name_plural = ("Documents type")
 
     def __str__(self) -> str:
         return self.type_doc
 
-
+"""
+Esto es una operacion de la view en documents
 class Totals(models.Model):
     id = models.AutoField(null=False, blank=False,
                           primary_key=True, unique=True)
@@ -31,18 +32,15 @@ class Totals(models.Model):
         verbose_name_plural = ("")
 
     def __str__(self) -> str:
-        return self.id
+        return self.id"""
 
 
-class SalesDocument(models.Model):
-    id = models.AutoField(null=False, blank=False,
-                          primary_key=True, unique=True)
+class SaleDocument(models.Model):
     branch = models.CharField(null=False, blank=False, max_length=20)
     document_number = models.CharField(null=False, blank=False, max_length=20)
     ctrl_number = models.CharField(null=False, blank=False, max_length=20)
     issuance_date = models.DateField(null=False, blank=False)
     registration_date = models.DateField(null=False, blank=False)
-    state = models.CharField(null=False, blank=False, max_length=20)
     type_record = models.CharField(
         choices=TYPE_RECORD, null=False, blank=False, max_length=20)
     document_type = models.ForeignKey(
@@ -51,22 +49,19 @@ class SalesDocument(models.Model):
         cust.Customer, on_delete=models.DO_NOTHING, default=None)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("s")
+        verbose_name = ("Sale document")
+        verbose_name_plural = ("Sale documents")
 
     def __str__(self) -> str:
-        return self.id
+        return self.document_number
 
 
-class BuysDocument(models.Model):
-    id = models.AutoField(null=False, blank=False,
-                          primary_key=True, unique=True)
+class PurchaseDocument(models.Model):
     branch = models.CharField(null=False, blank=False, max_length=20)
     document_number = models.CharField(null=False, blank=False, max_length=20)
     ctrl_number = models.CharField(null=False, blank=False, max_length=20)
     issuance_date = models.DateField(null=False, blank=False, max_length=20)
     registration_date = models.DateField(null=False, blank=False)
-    state = models.CharField(null=False, blank=False, max_length=20)
     type_record = models.CharField(
         choices=TYPE_RECORD, null=False, blank=False, max_length=20)
     document_type = models.ForeignKey(
@@ -75,66 +70,65 @@ class BuysDocument(models.Model):
         pr.Provider, on_delete=models.DO_NOTHING, default=None)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("s")
+        verbose_name = ("Purchase document")
+        verbose_name_plural = ("Purchasing documents")
 
     def __str__(self) -> str:
         return self.document_number
 
 
-class SalesSummary(models.Model):
-    id = models.AutoField(null=False, blank=False,
-                          primary_key=True, unique=True)
+class SaleSummary(models.Model):
     code = models.CharField(null=False, blank=False, max_length=20)
     description = models.CharField(null=False, blank=False, max_length=50)
     n_invoice = models.CharField(null=False, blank=False, max_length=20)
     zeta = models.CharField(null=False, blank=False, max_length=20)
-    since = models.DateTimeField(null=False, blank=False)
-    until = models.DateTimeField(null=False, blank=False)
-    machine = models.ForeignKey(tm.TaxMachine, default=None, on_delete=models.CASCADE)
+    since = models.DateField(null=False, blank=False)
+    until = models.DateField(null=False, blank=False)
+    machine = models.ForeignKey(
+        tm.TaxMachine, default=None, on_delete=models.DO_NOTHING)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("")
+        verbose_name = ("Sale summary")
+        verbose_name_plural = ("Sales summaries")
 
     def __str__(self) -> str:
         return self.code
 
 
-class DocumentsItems(models.Model):
-    id = models.AutoField(null=False, blank=False,
-                          primary_key=True, unique=True)
+class ItemDocument(models.Model):
     description = models.CharField(null=True, blank=True, max_length=100)
     amount = models.FloatField(null=False, blank=False)
     iva = models.FloatField(null=False, blank=False)
     amount_iva = models.FloatField(null=False, blank=False)
-    c_ctrl = models.FloatField(null=False, blank=False)
-    patente = models.FloatField(null=False, blank=False)
-    ret = models.FloatField(null=False, blank=False)
-    sale_document = models.OneToOneField(
-        SalesDocument, on_delete=models.DO_NOTHING, default=None, null=True, blank=True)
-    buy_document = models.OneToOneField(
-        BuysDocument, on_delete=models.DO_NOTHING, default=None, null=True, blank=True)
+    c_ctrl = models.FloatField(null=True, blank=True)
+    patente = models.FloatField(null=True, blank=True)
+    ret = models.FloatField(null=True, blank=True)
+    sale_document = models.ForeignKey(
+        SaleDocument, on_delete=models.CASCADE, null=True, blank=True)
+    purchase_document = models.ForeignKey(
+       PurchaseDocument, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("")
+        verbose_name = ("Item document")
+        verbose_name_plural = ("Items documents")
 
     def __str__(self) -> str:
         return self.description
 
 
 class RetIVA(models.Model):
-
-    id = models.AutoField(null=False, blank=False,
-                          primary_key=True, unique=True)
-    nro_ret = models.CharField(null=True, blank=True, max_length=20)
-    date_reception = models.DateTimeField(null=True, blank=True)
-    date_ret_iva = models.DateTimeField(null=True, blank=True)
+    nro_ret = models.CharField(null=True, blank=True, max_length=30)
+    date_reception = models.DateField(null=True, blank=True)
+    date_ret_iva = models.DateField(null=True, blank=True)
+    amount_iva= models.FloatField(null=True, blank=True)
+    percent_iva= models.FloatField(null=True, blank=True)
+    amount_ret_iva=models.FloatField(null=True, blank=True)
+    purchasebonate_accountant= models.CharField(null=True, blank=True, max_length=20)
+    purchasebonate_date= models.DateField(null=True, blank=True)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("")
+        verbose_name = ("Retention IVA")
+        verbose_name_plural = ("Retentions IVA")
 
     def __str__(self):
         return self.nro_ret

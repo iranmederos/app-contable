@@ -10,7 +10,6 @@ class Role(models.Model):
         return self.rol
 
 class CustomUser(AbstractUser):
-    id = models.AutoField(null=False, blank=False,primary_key=True, unique=True)
     username =  models.CharField(max_length=50,null=True, blank=True,default=None)
     password = models.CharField(max_length=100,null=False, blank=False)
     first_name = models.CharField(max_length=50,null=False, blank=False)

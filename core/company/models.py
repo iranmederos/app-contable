@@ -8,17 +8,20 @@ TYPE_PERSON=(('1','Natural'),('2','Juridica'))
 TYPE_TAXPAYER=(('1','Formal'),('2','Ordinario'),('3','Especial'),('4','Publico'),('5','No Especial'))
 
 class RegistrationData(models.Model):
-    id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
     constitution_date= models.DateField(null=False, blank=False)
     registration_date= models.DateField(null=False, blank=False)
     registration_number= models.CharField(null=False, blank=False, unique=True, max_length=50)
     registration_office= models.CharField(null=False, blank=False, max_length=50)
     registration_city= models.CharField(null=False, blank=False,  max_length=50)
 
+    class Meta:
+        verbose_name = ("Registration date")
+        verbose_name_plural = ("Registration date")
 
+    def __str__(self) -> str:
+        return self.registration_number
 
 class Company(models.Model):
-    id= models.AutoField(null=False, blank=False,primary_key=True, unique=True)
     name= models.CharField(null=False, blank=False, unique=True, max_length=50)
     business_name= models.CharField(null=False, blank=False, unique=True, max_length=50)
     fiscal_period_ini= models.DateField(null=False, blank=False)
@@ -38,8 +41,8 @@ class Company(models.Model):
     registration_data= models.OneToOneField(RegistrationData, on_delete=models.CASCADE, null=False, blank=False, unique=True)
 
     class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("")
+        verbose_name = ("Company")
+        verbose_name_plural = ("Companies")
 
     def __str__(self) -> str:
         return self.business_name
