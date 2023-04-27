@@ -1,41 +1,41 @@
-from .models import SalesDocument,SalesSummary,BuysDocument,Totals,DocumentsItems,DocumentType
-from rest_framework import serializers
+from .models import SaleDocument,SaleSummary,PurchaseDocument,ItemDocument,DocumentType,RetIVA
 from rest_framework.serializers import ModelSerializer
 
 
-class SalesDocumentSerializer(ModelSerializer):
+class SaleDocumentSerializer(ModelSerializer):
 
     class Meta:
-        model= SalesDocument
+        model= SaleDocument
         fields= '__all__'
 
 
-class SalesSummarySerializer(ModelSerializer):
+class SaleSummarySerializer(ModelSerializer):
 
     class Meta:
-        model= SalesSummary
+        model= SaleSummary
         fields= '__all__'
 
-class BuysDocumentSerializer(ModelSerializer):
+class PurchaseDocumentSerializer(ModelSerializer):
 
     class Meta:
-        model= BuysDocument
+        model= PurchaseDocument
         fields= '__all__'
 
-class TotalsSerializer(ModelSerializer):
+
+class ItemDocumentSerializer(ModelSerializer):
 
     class Meta:
-        model= Totals
-        fields= '__all__'
-
-class DocumentsItemsSerializer(ModelSerializer):
-
-    class Meta:
-        model= DocumentsItems
+        model= ItemDocument
         fields= '__all__'
 
 class DocumentTypeSerializer(ModelSerializer):
 
     class Meta:
         model= DocumentType
+        fields= '__all__'
+
+class RentIVASerializer(ModelSerializer):
+
+    class Meta:
+        model= RetIVA
         fields= '__all__'
