@@ -1,12 +1,11 @@
 from django.db import models
 from company.models import Company
 
-
-TYPE_SALES=(('1','Interna'),('2','Exportacion'))
-TYPE_TAXPAYER=(('1','Contribuyente'),('2','No contribuyente'))
-TYPE_PERSON=(('1','Natural'),('2','Juridico'))
-
 class Provider(models.Model):
+    TYPE_SALES=(('1','Interna'),('2','Exportacion'))
+    TYPE_TAXPAYER=(('1','Contribuyente'),('2','No contribuyente'))
+    TYPE_PERSON=(('1','Natural'),('2','Juridico'))
+
     rif= models.CharField(null=False, blank=False, max_length=20)
     business_name= models.CharField(null=False, blank=False, max_length=20)
     domiciled= models.BooleanField(null=False, blank=False)

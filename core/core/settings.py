@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y2eaa$#pl2klf0wot2wefs^p*tqmz2_1e=3nwq@pk9!s7x0jx1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,25 +37,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #external apps
+    # external apps
     'corsheaders',
     'rest_framework',
     'coreapi',
-    #internal apps
+    'debug_toolbar',
+    # internal apps
     'authentication',
     'company',
     'customers',
     'providers',
     'documents',
     'tax_machine',
-    
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': (
+        'rest_framework.schemas.coreapi.AutoSchema'
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -118,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -135,11 +143,18 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#cors authorization
+# cors authorization
 CORS_ALLOWED_ORIGINS = [
     "https://example.com",
 ]
 
-REST_FRAMEWORK = {
-  'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
-}
+CORS_ORIGIN_ALLOW_ALL= True
+CORS_ALLOW_CREDENTIALS= True
+
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+AUTH_USER_MODEL = 'authentication.User'
+

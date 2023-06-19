@@ -20,6 +20,8 @@ from rest_framework.documentation import include_docs_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include_docs_urls(title='Contable API docs')),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path('auth/', include('authentication.urls')),
     path('company/', include('company.urls')),
     path('customer/', include('customers.urls')),
     path('provider/', include('providers.urls')),

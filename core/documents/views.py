@@ -1,9 +1,10 @@
 from .serializers import PurchaseDocument, DocumentTypeSerializer, ItemDocumentSerializer, PurchaseDocumentSerializer, SaleDocumentSerializer, SaleSummarySerializer, RentIVASerializer
 from .models import DocumentType, ItemDocument, PurchaseDocument, SaleSummary, SaleDocument, RetIVA
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 # Create your views here.
 
 
+#crud all models
 class PurchaseDocumentView(viewsets.ModelViewSet):
     serializer_class = PurchaseDocumentSerializer
     queryset = PurchaseDocument.objects.all()
@@ -32,3 +33,18 @@ class SaleDocumentView(viewsets.ModelViewSet):
 class RetIVAView(viewsets.ModelViewSet):
     serializer_class = RentIVASerializer
     queryset = RetIVA.objects.all()
+
+
+#totals
+#devuelve el total con iva
+class Totals(generics.RetrieveAPIView):
+    pass
+
+"""
+ id = models.AutoField(null=False, blank=False,
+                          primary_key=True, unique=True)
+    amount = models.FloatField(null=False, blank=False)
+    gross_amount = models.FloatField(null=False, blank=False)
+    iva_amount = models.FloatField(null=False, blank=False)
+    neto_amount = models.FloatField(null=False, blank=False)
+"""

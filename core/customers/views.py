@@ -7,3 +7,4 @@ from rest_framework import viewsets
 class CustomerView(viewsets.ModelViewSet):
     serializer_class= CustomerSerializer
     queryset= Customer.objects.all()
+

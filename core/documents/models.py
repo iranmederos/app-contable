@@ -17,23 +17,6 @@ class DocumentType(models.Model):
     def __str__(self) -> str:
         return self.type_doc
 
-"""
-Esto es una operacion de la view en documents
-class Totals(models.Model):
-    id = models.AutoField(null=False, blank=False,
-                          primary_key=True, unique=True)
-    amount = models.FloatField(null=False, blank=False)
-    gross_amount = models.FloatField(null=False, blank=False)
-    iva_amount = models.FloatField(null=False, blank=False)
-    neto_amount = models.FloatField(null=False, blank=False)
-
-    class Meta:
-        verbose_name = ("")
-        verbose_name_plural = ("")
-
-    def __str__(self) -> str:
-        return self.id"""
-
 
 class SaleDocument(models.Model):
     branch = models.CharField(null=False, blank=False, max_length=20)

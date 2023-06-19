@@ -1,12 +1,6 @@
 from django.db import models
 
 
-
-
-TYPE_NAC=(('1','Nacional'),('2','Extranjero'))
-TYPE_PERSON=(('1','Natural'),('2','Juridica'))
-TYPE_TAXPAYER=(('1','Formal'),('2','Ordinario'),('3','Especial'),('4','Publico'),('5','No Especial'))
-
 class RegistrationData(models.Model):
     constitution_date= models.DateField(null=False, blank=False)
     registration_date= models.DateField(null=False, blank=False)
@@ -22,6 +16,10 @@ class RegistrationData(models.Model):
         return self.registration_number
 
 class Company(models.Model):
+    TYPE_NAC=(('1','Nacional'),('2','Extranjero'))
+    TYPE_PERSON=(('1','Natural'),('2','Juridica'))
+    TYPE_TAXPAYER=(('1','Formal'),('2','Ordinario'),('3','Especial'),('4','Publico'),('5','No Especial'))
+
     name= models.CharField(null=False, blank=False, unique=True, max_length=50)
     business_name= models.CharField(null=False, blank=False, unique=True, max_length=50)
     fiscal_period_ini= models.DateField(null=False, blank=False)
